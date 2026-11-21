@@ -1,15 +1,15 @@
 # PashuSetu — पशुसेतु
 
-Mobile-first livestock and veterinary register for rural India.
+Installable Android livestock and veterinary register (Android 8.0+). The app packages the existing interface into an offline WebView with native backup export and a launcher icon. No internet permission is required.
 
-## Run
-Open index.html in a modern browser. No build or external libraries required. For hosting, enable GitHub Pages in Settings > Pages, deploy from main / root.
+## Download the APK
+Open [GitHub Actions](https://github.com/avinashxthorn/PashuSetu/actions), select Build Android APK, and open a successful run. Download PashuSetu-APK under Artifacts, unzip it, and install PashuSetu.apk on Android. If no run appears, use Run workflow. The APK is debug-signed for testing, not Play Store distribution.
+
+## Build locally
+Use JDK 17, Gradle 8.9 and Android SDK 35. Run `gradle :app:assembleDebug`. Output: `app/build/outputs/apk/debug/app-debug.apk`.
 
 ## Features
-Animal registration, editing and search; health, vaccination, breeding, production, feed and finance records; pie, bar and milk trend charts; due-date reminders; partial Hindi localization; JSON backup and CSV export; fictional sample data.
+Animal registration, editing and search; health, vaccination, breeding, production, feed and finance records; live charts; due-date reminders; partial Hindi localization; JSON and CSV export; sample data.
 
 ## Limitations
-Prototype with local browser storage only. No accounts, cloud sync, backup restore or background notifications. Do not commit real owner data to this public repository. Veterinary decisions must be made by a qualified veterinarian. Browser/device testing is still required.
-
-## Smoke test checklist
-Register and edit an animal, reload, search by tag, add each record type, verify charts and reminders, switch language, export data, and delete a sample animal. Repeat on a mobile device.
+Prototype with device-local WebView storage. No login, sync, backup import or background alerts. Do not commit real owner data to this public repository. Clearing app data or uninstalling removes local records. Export regularly. Clinical decisions require a veterinarian. Device testing and production signing are still required.
