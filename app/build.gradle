@@ -1,0 +1,19 @@
+plugins { id 'com.android.application' version '8.7.3' }
+android {
+    namespace 'in.pashusetu.app'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'in.pashusetu.app'
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    sourceSets { main { assets.srcDirs = [layout.buildDirectory.dir('generated/pashuAssets').get().asFile] } }
+}
+tasks.register('copyAppAssets', Copy) {
+    from(rootProject.file('index.html'))
+    into(layout.buildDirectory.dir('generated/pashuAssets'))
+}
+tasks.named('preBuild').configure { dependsOn 'copyAppAssets' }
