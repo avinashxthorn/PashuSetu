@@ -12,6 +12,7 @@ import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -73,7 +74,7 @@ fun recordFields(k:String):List<FormField> = (when(k){
  Row(horizontalArrangement=Arrangement.spacedBy(6.dp)){repeat(3){i->Box(Modifier.weight(1f).height(5.dp).clip(RoundedCornerShape(10.dp)).background(if(i<=step)Green else Line))}}
  Text(tr("STEP ${step+1} OF 3","चरण ${step+1} / 3"),fontSize=11.sp,letterSpacing=1.3.sp,color=Green,fontWeight=FontWeight.Bold);Text(steps[step],style=MaterialTheme.typography.headlineMedium)
  val fields=when(step){0->animalFields.subList(0,5);1->animalFields.subList(5,11);else->animalFields.subList(11,animalFields.size)}
- Sheet{fields.forEach{f->FieldInput(f,draft[f.key].orEmpty()){v->draft=HashMap(draft).apply{put(f.key,v)};error=""};Spacer(Modifier.height(13.dp))}}
+ Sheet{fields.forEach{f->FieldInput(f,draft[f.key].orEmpty(),{v->draft=HashMap(draft).apply{put(f.key,v)};error=""});Spacer(Modifier.height(13.dp))}}
  if(error.isNotBlank())Text(error,color=Rust,fontSize=13.sp)
  }}
 @Composable fun CareForm(kind:String,aid:String?,data:Register,record:Care?,busy:Boolean,back:()->Unit,save:(Map<String,String>)->Unit){
