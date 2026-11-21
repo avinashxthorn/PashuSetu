@@ -1,4 +1,4 @@
-package in.pashusetu.app
+package `in`.pashusetu.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

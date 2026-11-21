@@ -1,4 +1,4 @@
-package in.pashusetu.app
+package `in`.pashusetu.app
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

@@ -1,4 +1,4 @@
-package in.pashusetu.app
+package `in`.pashusetu.app
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
