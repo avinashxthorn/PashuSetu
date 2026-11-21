@@ -31,7 +31,7 @@ class ComposeFlowTest {
   rule.onNodeWithText("Growth").performClick();waitText("Weight history · kg");snap("04-growth")
   rule.activityRule.scenario.recreate();waitText("Gauri QA");waitText("350 kg")
   rule.onNodeWithContentDescription("Back").performClick();waitText("Your farm, today.")
-  rule.onNodeWithText("Reports",substring=false).performClick();waitText("Farm reports");snap("05-reports")
+  rule.onAllNodesWithText("Reports",substring=false).onLast().performClick();waitText("Farm reports");snap("05-reports")
  }
  @Test fun backupValidation(){
   val a=animalFrom(mapOf("id" to "a","name" to "Backup cow","species" to "Cow","status" to "Healthy"))
