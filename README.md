@@ -1,15 +1,23 @@
-# PashuSetu — पशुसेतु
+# PashuSetu — native Android field edition
 
-Installable Android livestock and veterinary register (Android 8.0+). The app packages the existing interface into an offline WebView with native backup export and a launcher icon. No internet permission is required.
+PashuSetu 2.0 is an offline Android livestock register. Its UI is implemented using native Android views in Java, not a hosted website or WebView. No internet permission is requested.
 
-## Download the APK
-Open [GitHub Actions](https://github.com/avinashxthorn/PashuSetu/actions), select Build Android APK, and open a successful run. Download PashuSetu-APK under Artifacts, unzip it, and install PashuSetu.apk on Android. If no run appears, use Run workflow. The APK is debug-signed for testing, not Play Store distribution.
+## Download and install
 
-## Build locally
-Use JDK 17, Gradle 8.9 and Android SDK 35. Run `gradle :app:assembleDebug`. Output: `app/build/outputs/apk/debug/app-debug.apk`.
+Open [GitHub Actions](https://github.com/avinashxthorn/PashuSetu/actions). Select the latest successful **Build and test Android APK** run. Download **PashuSetu-APK** under Artifacts and extract PashuSetu.apk. The **Native-screen-QA** artifact contains emulator screenshots and the test result.
+
+This is a debug-signed evaluation APK (Android 8.0+), not a Play Store release. Debug signing keys may differ across builds. Before upgrading from the previous version, export a JSON backup from the old app, install the new version, and restore that backup in Settings. The new native storage does not automatically migrate the old WebView database.
 
 ## Features
-Animal registration, editing and search; health, vaccination, breeding, production, feed and finance records; live charts; due-date reminders; partial Hindi localization; JSON and CSV export; sample data.
+- Native dashboard, animal passports, history, individual growth and milk charts, species and health filters.
+- Three-step registration; record health, vaccination, deworming, breeding, feed, production and financial entries.
+- Due-date reminders calculated from saved records, bilingual navigation and core fields.
+- Atomic app-private register storage, native backup export and validated restore.
+- Actual database read/write indicators (no artificial delay).
 
-## Limitations
-Prototype with device-local WebView storage. No login, sync, backup import or background alerts. Do not commit real owner data to this public repository. Clearing app data or uninstalling removes local records. Export regularly. Clinical decisions require a veterinarian. Device testing and production signing are still required.
+## Build
+JDK 17, Gradle 8.9, Android SDK 35: `gradle :app:assembleDebug :app:assembleDebugAndroidTest`.
+APK: app/build/outputs/apk/debug/app-debug.apk.
+
+## Limits
+Evaluation build. No cloud sync, account authentication, automatic background alerts or Play Store signing. Some dropdown values and errors remain English; clinical decisions require a veterinarian. Device testing is still necessary. The earlier index.html is retained for historical source reference only; it is not bundled in the native APK.
