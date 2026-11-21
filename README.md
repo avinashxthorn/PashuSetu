@@ -1,23 +1,15 @@
-# PashuSetu — native Android field edition
+# PashuSetu 3.0 — Compose edition
 
-PashuSetu 2.0 is an offline Android livestock register. Its UI is implemented using native Android views in Java, not a hosted website or WebView. No internet permission is requested.
+Native Android application for rural Indian livestock records. The Compose edition is developed on `compose-v3`; the previous 2.0 APK remains available from main.
 
-## Download and install
+## Design and architecture
+- Kotlin + Jetpack Compose, Material 3 typography, colors and navigation; system splash and actual asynchronous loading/saving states.
+- Offline-first Room/SQLite, separate repository and ViewModel/StateFlow layer, relational animal and care entities with foreign keys, transaction validation, and atomic backup restore.
+- Guided registration, searchable animal passports, individual growth and milk history, care records, farm finance, date-filtered analytics, English/Hindi core UI.
+- Legacy native 2.0 JSON data is imported once on first launch. Export an old backup before updating; debug signing keys can differ. WebView version backups can be imported from Settings.
 
-Open [GitHub Actions](https://github.com/avinashxthorn/PashuSetu/actions). Select the latest successful **Build and test Android APK** run. Download **PashuSetu-APK** under Artifacts and extract PashuSetu.apk. The **Native-screen-QA** artifact contains emulator screenshots and the test result.
-
-This is a debug-signed evaluation APK (Android 8.0+), not a Play Store release. Debug signing keys may differ across builds. Before upgrading from the previous version, export a JSON backup from the old app, install the new version, and restore that backup in Settings. The new native storage does not automatically migrate the old WebView database.
-
-## Features
-- Native dashboard, animal passports, history, individual growth and milk charts, species and health filters.
-- Three-step registration; record health, vaccination, deworming, breeding, feed, production and financial entries.
-- Due-date reminders calculated from saved records, bilingual navigation and core fields.
-- Atomic app-private register storage, native backup export and validated restore.
-- Actual database read/write indicators (no artificial delay).
-
-## Build
-JDK 17, Gradle 8.9, Android SDK 35: `gradle :app:assembleDebug :app:assembleDebugAndroidTest`.
-APK: app/build/outputs/apk/debug/app-debug.apk.
+## Build and quality gate
+Use the `compose-v3` GitHub Actions workflow **PashuSetu 3 — Compose APK and device QA**. An installable debug APK is uploaded only after assembly and signature verification; the overall run succeeds only after Android emulator tests and screenshot collection. Open the successful run and download `PashuSetu-3.0-APK`; actual screenshots are in `Compose-device-QA`.
 
 ## Limits
-Evaluation build. No cloud sync, account authentication, automatic background alerts or Play Store signing. Some dropdown values and errors remain English; clinical decisions require a veterinarian. Device testing is still necessary. The earlier index.html is retained for historical source reference only; it is not bundled in the native APK.
+Evaluation build; no account login, cloud sync, automatic background alerts or Play Store signing. Clinical decisions require a veterinarian. Some option labels/errors remain English. Physical-device usability and durability testing remain necessary.
